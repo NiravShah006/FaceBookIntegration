@@ -46,9 +46,7 @@ import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-/**
- * Created by nirav on 07/04/16.
- */
+
 public class LoginFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
 
     private LoginButton loginButton;
