@@ -100,7 +100,10 @@ public class LoginFragment extends Fragment implements GoogleApiClient.OnConnect
         accessToken = AccessToken.getCurrentAccessToken();
 
 
-        if (accessToken != null) {
+
+
+        if (accessToken != null ) {
+
             getFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment(), HomeFragment.class.getSimpleName()).commit();
         }
     }

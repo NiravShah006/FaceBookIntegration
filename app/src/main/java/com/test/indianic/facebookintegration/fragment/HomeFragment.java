@@ -67,7 +67,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        editText.setText(profilename);
+        editText.setText(Profile.getCurrentProfile().getName());
         logOutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
