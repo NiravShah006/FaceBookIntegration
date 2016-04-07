@@ -19,14 +19,12 @@ import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 import com.test.indianic.facebookintegration.R;
 
-/**
- * Created by nirav on 07/04/16.
- */
+
 public class HomeFragment extends android.support.v4.app.Fragment {
 
-    private Button logOutbtn;
+    private Button      logOutbtn;
     private ShareButton sharebtn;
-    private EditText editText;
+    private EditText   editText;
     private ProfileTracker profileTracker;
     private String profilename;
 
