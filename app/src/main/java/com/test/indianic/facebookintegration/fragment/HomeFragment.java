@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
@@ -15,30 +19,44 @@ import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 import com.test.indianic.facebookintegration.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class HomeFragment extends android.support.v4.app.Fragment {
 
     private Button      logOutbtn;
     private ShareButton sharebtn;
     private EditText   editText;
     private ProfileTracker profileTracker;
-    private String profilename;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-         profileTracker=new ProfileTracker() {
-            @Override
-            protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+        GraphRequest request = GraphRequest.newMeRequest(
+                AccessToken.getCurrentAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        Log.e("HomeFragment", object.toString());
 
-                Log.e("profile name",""+oldProfile.getName());
-                profilename=oldProfile.getName();
+                        // Application code
+                        try {
+                            String email = object.getString("email");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
-            }
-        };
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email,gender,birthday");
+        request.setParameters(parameters);
+        request.executeAsync();
 
-        profileTracker.startTracking();
+
 
     }
 
@@ -67,7 +85,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        editText.setText(Profile.getCurrentProfile().getName());
+
         logOutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +101,6 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        profileTracker.stopTracking();
+
     }
 }

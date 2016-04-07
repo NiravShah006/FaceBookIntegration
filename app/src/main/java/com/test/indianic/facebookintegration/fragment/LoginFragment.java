@@ -46,6 +46,8 @@ import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
+import java.util.Arrays;
+
 
 public class LoginFragment extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -124,7 +126,7 @@ public class LoginFragment extends Fragment implements GoogleApiClient.OnConnect
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signOut = (Button) view.findViewById(R.id.sign_out_button);
 
-        loginButton.setReadPermissions("user_friends");
+        loginButton.setReadPermissions(Arrays.asList("user_friends","public_profile","email"));
         // If using in a fragment
         loginButton.setFragment(this);
         // Other app specific specialization
@@ -136,15 +138,6 @@ public class LoginFragment extends Fragment implements GoogleApiClient.OnConnect
                 // App code
 
                 if (loginResult.getAccessToken() != null) {
-
-                    profileTracker = new ProfileTracker() {
-                        @Override
-                        protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
-
-                            if(currentProfile != null)
-                                tvUserName.setText(currentProfile.getName());
-                        }
-                    };
 
                     //redirect to home page
 
