@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_id": "x-fabric-121211",
+    "project_number": "174496699270",
+    "name": "My Project"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:174496699270:android:5a574d2cc94dc7b7",
+        "client_id": "android:com.test.indianic.facebookintegration",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.test.indianic.facebookintegration"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
