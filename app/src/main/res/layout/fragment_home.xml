@@ -6,7 +6,8 @@
     <EditText
         android:id="@+id/fragment_home_edt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="@string/com_facebook_share_button_text"/>
 
     <com.facebook.share.widget.ShareButton
         android:id="@+id/fragment_home_sharebtn"
